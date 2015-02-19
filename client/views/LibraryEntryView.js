@@ -7,11 +7,7 @@ var LibraryEntryView = Backbone.View.extend({
 
   events: {
     'click': function() {
-      if (document.getElementsByTagName("audio")[0].paused) {
-        this.model.play();
-      } else {
         this.model.enqueue();
-      }
     }
   },
 
