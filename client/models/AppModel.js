@@ -6,6 +6,7 @@ var AppModel = Backbone.Model.extend({
     this.set('songQueue', new SongQueue());
 
     params.library.on('enqueue', function(song) {
+      song.incrementPlays();
       var songQueue = this.get('songQueue');
       songQueue.add(song);
       if (document.getElementsByTagName('audio')[0].paused) {
@@ -18,7 +19,7 @@ var AppModel = Backbone.Model.extend({
       var songQueue = this.get('songQueue');
       songQueue.remove(song);
     }, this);
-    
+
     params.library.on('nextSong', function(song) {
       var songQueue = this.get('songQueue');
       var song = songQueue.at(0);
